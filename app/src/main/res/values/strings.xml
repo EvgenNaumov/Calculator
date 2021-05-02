@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_6">6</string>
+    <string name="_5">5</string>
+    <string name="_7">7</string>
+    <string name="_8">8</string>
+    <string name="_9">9</string>
+    <string name="_0">0</string>
+    <string name="dot_button">.</string>
+    <string name="divide_button">/</string>
+    <string name="add_button">+</string>
+    <string name="reduce_button">-</string>
+    <string name="multiply_button">*</string>
+    <string name="comma_button">,</string>
+    <string name="cancel_button">C</string>
+    <string name="percent_button">%</string>
+    <string name="equal_button">=</string>
+    <string name="mark_button">+/-</string>
+    <string name="del_button"><![CDATA[<]]></string>
+    <string name="ligththeme">LigthTheme</string>
+    <string name="darktheme">DarkTheme</string>
+</resources>

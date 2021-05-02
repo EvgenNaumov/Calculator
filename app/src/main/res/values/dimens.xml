@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_button">20sp</dimen>
+    <dimen name="sizeTextView1">38sp</dimen>
+    <dimen name="sizeTextView2">30sp</dimen>
+    <dimen name="button_width">66</dimen>
+    <dimen name="button_height">69</dimen>
+    <dimen name="textsize_view1">24sp</dimen>
+    <dimen name="textsize_view2">18sp</dimen>
+    <dimen name="width_landscape">90</dimen>
+    <dimen name="height_landscape">70</dimen>
+    <dimen name="width_portrait">95dp</dimen>
+    <dimen name="height_portrait">60</dimen>
+    <dimen name="button_marginLeft">4</dimen>
+    <dimen name="margin">4dp</dimen>
+    <dimen name="no_margin">0dp</dimen>
+    <dimen name="no_padding">0dp</dimen>
+    <dimen name="height_textview_land">20dp</dimen>
+</resources>
