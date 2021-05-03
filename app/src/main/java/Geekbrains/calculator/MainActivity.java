@@ -7,19 +7,34 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.radiobutton.MaterialRadioButton;
+
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity<listOperation> extends AppCompatActivity {
 
     private static final String PARAM = "PARAM";
-    private static final String NameSharedPref = "MYTHEME";
-    private static final String appTheme = "APP_THEME";
+    private static final String PARAM_Text1 = "";
+    private static final String PARAM_TextTotal = "";
+
+    //имя настроек приложения
+    public static final String NameSharedPref = "CALC";
+
+    public static final String appTheme = "APP_THEME";
+
+    private static final int AppThemeLight  = 0;
+    private static final int AppThemeDark   = 1;
+    private static final int AppThemeDef    = 2;
 
     private Button button1;
     private Button button2;
@@ -43,18 +58,14 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonMark;
     private Button buttonDel;
 
-    private static final int AppThemeLight  = 0;
-    private static final int AppThemeDark   = 1;
-    private static final int AppThemeDef    = 2;
-
     private InitMain initMain;
     private MainLogic mainLogic;
-    private ListOperation listOperation = new ListOperation();
+    private ListOperation listOperation = ListOperation.getInstance();
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putSerializable(PARAM,listOperation);
+        outState.putParcelable(PARAM, listOperation);
     }
 
     @Override
@@ -79,7 +90,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setAppTheme(int codeStyle){
-        SharedPreferences sharedPreferences = getSharedPreferences("AppThemeLight",codeStyle);
+        SharedPreferences sharedPreferences = getSharedPreferences(NameSharedPref,MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(appTheme,codeStyle);
+        editor.apply();
+
     }
 
     private int getCodeStyle(int codeStyle) {
@@ -93,20 +108,25 @@ public class MainActivity extends AppCompatActivity {
                     return R.style.AppThemeLight;
             case AppThemeDark:
                 return R.style.AppTheme;
-            default: return R.style.AppThemeDefault;
+            default:
+                return R.style.AppThemeDefault;
         }
     }
 
     private void initThemeChoser() {
-        iniRAdioButton(findViewById(R.id.radiobutton1),0);
+        iniRAdioButton(findViewById(R.id.radiobutton1),AppThemeLight);
+        iniRAdioButton(findViewById(R.id.radiobutton1),AppThemeDark);
+        RadioGroup rg = findViewById(R.id.radio_group);
+        ((MaterialRadioButton)rg.getChildAt(getCodeStyle(AppThemeLight))).setChecked(true);
     }
 
     private void iniRAdioButton(View button, final int codeStyle) {
-        (RadioButton)button.setChecked(true);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"thema",Toast.LENGTH_LONG).show();
+                setAppTheme(codeStyle);
+                Toast.makeText(getApplicationContext(),"codeStyle " + Integer.toString(codeStyle),Toast.LENGTH_LONG).show();
+                recreate();
             }
         });
     }

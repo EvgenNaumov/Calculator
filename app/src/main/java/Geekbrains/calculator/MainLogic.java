@@ -24,6 +24,9 @@ public class MainLogic {
 
     private boolean doCalculation;
     private double rez;
+
+    private ListOperation ListOperation = Geekbrains.calculator.ListOperation.getInstance();
+
     public MainLogic() {
         doCalculation = false;
     }
@@ -34,7 +37,7 @@ public class MainLogic {
 
         String text = "";
         int ind = 0;
-        for (Operation operation:ListOperation.getListOperation()
+        for (Operation operation:ListOperation.getList()
              ) {
             String signOp = String.valueOf(operation.getCharSign());
             if (ind==0){
@@ -88,7 +91,7 @@ public class MainLogic {
 
         char inputSymbol = operand.toCharArray()[0];
         //не добавлять знаки если лист пустой (на экране ничего нет)
-        if ((ListOperation.getListOperation().isEmpty())
+        if ((ListOperation.getList().isEmpty())
         ) {
             if (isOperationSign(inputSymbol) || isOperationSignTotal(inputSymbol) || inputSymbol==CHAR_PERCENT || operand.equals(STR_MARK)) {
                 return false;
@@ -97,7 +100,7 @@ public class MainLogic {
         }
 
         //не добавлять знак операции (+,-...) если последний элемент знак а не число или не %
-        if (!ListOperation.getListOperation().isEmpty()) {
+        if (!ListOperation.getList().isEmpty()) {
             char[] arrSymbolOnDisplay = textOnDisplayToArray(showText);
             char lastSymbolOnDisplay = arrSymbolOnDisplay[showText.toCharArray().length-1];
 
@@ -144,7 +147,7 @@ public class MainLogic {
 
 
         Operation lastOperation;
-        List<Operation> listOperation = ListOperation.getListOperation();
+        List<Operation> listOperation = ListOperation.getList();
 
         //финальное вычисление
 //        if (operation.toCharArray()[0]==CHAR_TOTAL) {
@@ -235,7 +238,7 @@ public class MainLogic {
     }
 
     public void calculation(TextView textView1, TextView textView2, boolean finalTotal) {
-        List<Operation> listOperation = ListOperation.getListOperation();
+        List<Operation> listOperation = ListOperation.getList();
         if (listOperation.size()==0){
             return;
         }
