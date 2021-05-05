@@ -21,6 +21,7 @@ public class MainLogic {
     private final static char CHAR_EQUAL = '=';
     private final static char CHAR_DEL = '<';
     private final static char CHAR_CANCEL = 'C';
+    private final static char CHAR_EMPTY = ' ';
 
     private boolean doCalculation;
     private double rez;
@@ -100,11 +101,16 @@ public class MainLogic {
         }
 
         //не добавлять знак операции (+,-...) если последний элемент знак а не число или не %
+        char lastSymbolOnDisplay = CHAR_EMPTY;
+        char[] arrSymbolOnDisplay = new char[' '];
         if (!ListOperation.getList().isEmpty()) {
-            char[] arrSymbolOnDisplay = textOnDisplayToArray(showText);
-            char lastSymbolOnDisplay = arrSymbolOnDisplay[showText.toCharArray().length-1];
+            if (!showText.isEmpty()){
+                return true;
+            }
 
-//            char c = ListOperation.getListOperand().get((int) ListOperation.getListOperand().toArray().length - 1).toCharArray()[0];
+            arrSymbolOnDisplay = textOnDisplayToArray(showText);
+            lastSymbolOnDisplay = arrSymbolOnDisplay[showText.toCharArray().length - 1];
+
             if ((isOperationSign(lastSymbolOnDisplay) && isOperationSign(inputSymbol))
             || (lastSymbolOnDisplay==CHAR_PERCENT && inputSymbol==CHAR_PERCENT)) {
                 return false;

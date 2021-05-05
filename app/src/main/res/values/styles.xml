@@ -7,11 +7,24 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="AppThemeLight" parent="Theme.MaterialComponents.Light">
+    <style name="AppThemeLight" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppThemeRed" parent="Theme.MaterialComponents.Light">
         <item name="colorPrimary">#e91e63</item>
         <item name="colorPrimaryDark">#b0003a</item>
         <item name="colorAccent">#ff6090</item>
     </style>
+
+    <style name="AppThemeDark" parent="ThemeOverlay.MaterialComponents.Dark">
+        <item name="colorPrimary">#A0EF50</item>
+        <item name="colorPrimaryDark">#186707</item>
+        <item name="colorAccent">#DFD363</item>
+    </style>
+
 
     <style name="AppThemeDefault" parent="Theme.MaterialComponents.Light">
         <item name="colorPrimary">#B1ECE6</item>

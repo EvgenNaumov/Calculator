@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import com.google.android.material.radiobutton.MaterialRadioButton;
 
+import org.w3c.dom.Text;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -72,7 +74,7 @@ public class MainActivity<listOperation> extends AppCompatActivity {
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         listOperation = savedInstanceState.getParcelable(PARAM);
-        int a=1;
+
     }
 
     @Override
@@ -83,6 +85,10 @@ public class MainActivity<listOperation> extends AppCompatActivity {
 
         initView();
         initThemeChoser();
+
+            TextView textView1 = findViewById(R.id.textView1);
+            TextView textView2 = findViewById(R.id.textView2);
+            mainLogic.calculation(textView1,textView2,false);
     }
 
     private int getAppTheme(int codeStyle) {
@@ -107,7 +113,7 @@ public class MainActivity<listOperation> extends AppCompatActivity {
             case AppThemeLight:
                     return R.style.AppThemeLight;
             case AppThemeDark:
-                return R.style.AppTheme;
+                return R.style.AppThemeDark;
             default:
                 return R.style.AppThemeDefault;
         }
@@ -115,7 +121,7 @@ public class MainActivity<listOperation> extends AppCompatActivity {
 
     private void initThemeChoser() {
         iniRAdioButton(findViewById(R.id.radiobutton1),AppThemeLight);
-        iniRAdioButton(findViewById(R.id.radiobutton1),AppThemeDark);
+        iniRAdioButton(findViewById(R.id.radiobutton2),AppThemeDark);
         RadioGroup rg = findViewById(R.id.radio_group);
         ((MaterialRadioButton)rg.getChildAt(getCodeStyle(AppThemeLight))).setChecked(true);
     }
