@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/MyStyle_Landscape"
     >
 
     <LinearLayout
@@ -19,6 +18,33 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
+
+            <RadioGroup
+                android:id="@+id/radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:orientation="horizontal"
+                android:weightSum="0">
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/radiobutton1"
+                    android:text="@string/ligththeme"
+                    android:backgroundTint="@color/cardview_light_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/radiobutton2"
+                    android:text="@string/darktheme"
+                    android:background="#5E4D85"
+                    android:backgroundTint="#CCBBF3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </RadioGroup>
+
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textView1"

@@ -86,10 +86,15 @@ public class MainActivity<listOperation> extends AppCompatActivity {
         initView();
         initThemeChoser();
 
-            TextView textView1 = findViewById(R.id.textView1);
-            TextView textView2 = findViewById(R.id.textView2);
-            mainLogic.calculation(textView1,textView2,false);
+        setParamDisplay();
     }
+
+    private void setParamDisplay(){
+        TextView textView1 = findViewById(R.id.textView1);
+        TextView textView2 = findViewById(R.id.textView2);
+        mainLogic.calculation(textView1,textView2,false);
+    }
+
 
     private int getAppTheme(int codeStyle) {
         return codeStyleToStyleId(getCodeStyle(codeStyle));

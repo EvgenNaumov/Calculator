@@ -32,7 +32,7 @@ public class MainLogic {
         doCalculation = false;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+//    @RequiresApi(api = Build.VERSION_CODES.O)
     public void textShowOnDisplay(TextView textView1) {
         String oldText = (String) textView1.getText();
 
@@ -294,6 +294,7 @@ public class MainLogic {
             }
 
         }
+        textShowOnDisplay(textView1);
         textView2.setText(String.valueOf(valueTotal));
         rez = valueTotal;
 
